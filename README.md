@@ -116,8 +116,9 @@ El script debe estar escrito en javascript (puedes usar librerías/frameworks qu
 #### Ejercicio 3   (**5pts**)
 
 El siguiente desafío pondrá a prueba tus habilidades como frontend, el desafío consta de construir una interfaz web responsive de los super héroes de Marvel.
+En la evaluación consideraremos usabilidad y consistencia en el diseño.
 
-### API
+##### API
 
 Para poder utilizar la API debes ingresar a https://developer.marvel.com/ sección **Get a key** completar el formulario de registro y del menú API-KEY. Luego de obtener la **public y private key** revisa la forma de autenticar en el siguiente [link](https://developer.marvel.com/documentation/authorization) para poder acceder a los recursos y al endpoint de personajes.
 
