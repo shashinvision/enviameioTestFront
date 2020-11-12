@@ -22,7 +22,7 @@ El entregable puede ser un script que se pueda ejecutar por terminal o una web s
 Dado los siguientes json:
 ​
 ```javascript
-   // josn 
+   // JSON 
    let values =  {
         1: {
             carrier: "CCH",
@@ -114,7 +114,7 @@ Se debe generar un script que con estas entradas genere el siguiente resultado:
 El script debe estar escrito en javascript (puedes usar librerías/frameworks que te ayuden con la manipulación de los json), el entregable puede ser un script por terminal o una web simple.
 
 #### Ejercicio 3   (**5pts**)
-​
+
 El siguiente desafío pondrá a prueba tus habilidades como frontend, el desafío consta de construir una interfaz web responsive de los super héroes de Marvel.
 
 ### API
