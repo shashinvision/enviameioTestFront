@@ -116,7 +116,7 @@ El script debe estar escrito en javascript (puedes usar librerías/frameworks qu
 #### Ejercicio 3   (**5pts**)
 
 El siguiente desafío pondrá a prueba tus habilidades como frontend, el desafío consta de construir una interfaz web responsive de los super héroes de Marvel.
-  _En la evaluación consideraremos usabilidad y consistencia en el diseño._
+<br> _En la evaluación consideraremos usabilidad y consistencia en el diseño._
 
 ##### API
 
