@@ -1,9 +1,14 @@
 # Frontend Test
 
 Bienvenid@ a la prueba técnica que hemos diseñado para quienes postulan al cargo de frontend developer en Envíame.
-La prueba está diseñada para ser resuelta en tres jornadas laborales (2 días).
+La prueba está diseñada para ser resuelta en tres jornadas laborales (3 días).
 
-En caso de que tengas alguna pregunta puedes escribirnos a: *tech-test@enviame.io*
+**Asegurate de dejar tu trabajo en un repositorio de github y al finalizar tu tarea nos compartes el repositorio donde deben incluirse todas las instrucciones para que podamos ejecutar tu trabajo de manera local.**
+
+#### Importante: ####
+**El código debe utilizar sintaxis ES6 (ES2015) o super**
+
+En caso de preguntas dirigete a: *tech-test@enviame.io*, usando el asunto [Backend-Test]
 
 Te deseamos mucho éxito!
 
@@ -134,8 +139,9 @@ Para poder utilizar la API debes ingresar a https://developer.marvel.com/ secci�
 
 3 - Añadir un buscador en la interfaz que permita buscar un super héroe por su nombre. (**1pts**)
 
+4 - Generar un componente nuevo que permita editar la información “Name” y “Description” localmente y actualizar el listado en consecuencia. (Al actualizar el sitio está bien que se pierda la información) (**2pts**)
+
 #### Requerimientos técnicos
 
 La interfaz web debe estar construida con el framework y/o librerías a elección (ReacJS, Vue, Angular, CSS Bootstrap, Less/SASS, etc.)
-
 
