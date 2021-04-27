@@ -8,7 +8,7 @@ La prueba está diseñada para ser resuelta en tres jornadas laborales (3 días)
 #### Importante: ####
 **El código debe utilizar sintaxis ES6 (ES2015) o super**
 
-En caso de preguntas dirigete a: *tech-test@enviame.io*, usando el asunto [Backend-Test]
+En caso de preguntas dirigete a: *tech-test@enviame.io*, usando el asunto [Frontend-Test]
 
 Te deseamos mucho éxito!
 
@@ -142,6 +142,6 @@ Para poder utilizar la API debes ingresar a https://developer.marvel.com/ secci�
 4 - Generar un componente nuevo que permita editar la información “Name” y “Description” localmente y actualizar el listado en consecuencia. (Al actualizar el sitio está bien que se pierda la información) (**2pts**)
 
 #### Requerimientos técnicos
-
+​
 La interfaz web debe estar construida con el framework y/o librerías a elección (ReacJS, Vue, Angular, CSS Bootstrap, Less/SASS, etc.)
 
