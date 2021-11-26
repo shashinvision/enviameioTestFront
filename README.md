@@ -25,46 +25,25 @@ Se encuentra dentro de la carpeta 02_ejercicio/
 Se ejecuta desde Live Server en VS Code o simplemente abriendo el index.html dentro de la misma carpeta
 ```
 
-## Getting Started <a name = "getting_started"></a>
+### - Ejercicio 3
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
-### Prerequisites
+Se encuentra dentro de la carpeta 03_ejercicio, las instrucciones las puede encontrar en el siguiente link
 
-What things you need to install the software and how to install them.
+[Ejercicio 3:  /03_ejercicio/README.md](03_ejercicio/README.md)
 
+donde se indica lo siguiente: 
+
+## Project setup
+```
+cd 03_ejercicio
+```
+```
+npm install
 ```
 
-Give examples
-
+### para compilar
+```
+npm run serve
 ```
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
-
-```
-
-Give the example
-
-```
-
-And repeat
-
-```
-
-until finished
-
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
-
-## Usage <a name = "usage"></a>
-
-Add notes about how to use the system.
-
-```
-
-```
