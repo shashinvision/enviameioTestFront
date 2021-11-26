@@ -1,18 +1,38 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="container">
+      <div class="row">
+        <div
+          class="col-md-6 col-lg-4 col-xl-3"
+          v-for="item in personajes.results"
+          :key="item.id"
+        >
+          <Card :item="item" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import Card from "@/components/Card.vue";
+import { mapActions, mapState } from "vuex";
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld
-  }
-}
+    Card,
+  },
+  computed: {
+    ...mapState(["personajes"]),
+  },
+  methods: {
+    ...mapActions({
+      personajesAction: "personajesAction",
+    }),
+  },
+  mounted() {
+    this.personajesAction();
+  },
+};
 </script>
