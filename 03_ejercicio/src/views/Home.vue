@@ -9,11 +9,10 @@
         >
           <Card :item="item" />
         </div>
-        <button @click="cargaPagination">nuevo</button>
       </div>
       <div class="row">
         <div class="col mb-5">
-          <button class="btn btn-primary" type="button" disabled>
+          <button class="btn btn-primary" type="button" v-if="loader" disabled>
             <span
               class="spinner-border spinner-border-sm"
               role="status"
@@ -41,6 +40,7 @@ export default {
     return {
       paginationData: 16,
       offsetData: 0,
+      loader: false,
     };
   },
   computed: {
@@ -49,11 +49,16 @@ export default {
      * */
     ...mapState(["personajes"]),
   },
+
   mounted() {
+    this.loader = true;
     this.personajesAction({
       paginationData: this.paginationData,
       offsetData: 0,
     });
+    setTimeout(() => {
+      this.loader = false;
+    }, 5000);
     window.addEventListener("scroll", this.hadleScroll);
   },
   methods: {
@@ -68,9 +73,15 @@ export default {
         paginationData: this.paginationData,
         offsetData: this.offsetData,
       });
+
+      setTimeout(() => {
+        this.loader = false;
+      }, 5000);
     },
     // infinite scroll
     hadleScroll() {
+      this.loader = true;
+
       if (
         window.scrollY + window.innerHeight >=
         document.documentElement.scrollHeight
