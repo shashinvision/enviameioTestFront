@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 Ejercicio</title>
+</head>
+
+<body>
+
+    <div>
+        <h1>02 ejercicio</h1>
+
+        <p>
+            Ejercicio 2 (3pts)
+            Dado los siguientes json:​
+
+            // JSON
+            let values = {
+            1: {
+            carrier: "CCH",
+            service: "DEX",
+            },
+            17: {
+            carrier: "CHP",
+            service: "express",
+            }
+            }
+            // JSON
+            let json = {
+            data: {
+            BUIN: {
+            limit: 1,
+            over_carrier_service_id: 17,
+            under_carrier_service_id: 17
+            },
+            LAJA: {
+            limit: 1,
+            over_carrier_service_id: 1,
+            under_carrier_service_id: 1
+            },
+            LEBU: {
+            limit: 1,
+            over_carrier_service_id: 1,
+            under_carrier_service_id: 1
+            },
+            LOTA: {
+            limit: 1,
+            over_carrier_service_id: 17,
+            under_carrier_service_id: 17
+            }
+            }
+            }
+            Se debe generar un script que con estas entradas genere el siguiente resultado:
+
+            let result = {
+            BUIN: {
+            limit: 1,
+            over: {
+            carrier: "CHP",
+            service: "express",
+            },
+            under: {
+            carrier: "CHP",
+            service: "express",
+            }
+            },
+            LAJA: {
+            limit: 1,
+            over: {
+            carrier: "CCH",
+            service: "DEX",
+            },
+            under: {
+            carrier: "CCH",
+            service: "DEX",
+            }
+            },
+            LEBU: {
+            limit: 1,
+            over: {
+            carrier: "CCH",
+            service: "DEX",
+            },
+            under: {
+            carrier: "CCH",
+            service: "DEX",
+            }
+            },
+            LOTA: {
+            limit: 1,
+            over: {
+            carrier: "CHP",
+            service: "express",
+            },
+            under: {
+            carrier: "CHP",
+            service: "express",
+            }
+            }
+            }
+            El script debe estar escrito en javascript (puedes usar librerías/frameworks que te ayuden con la
+            manipulación de los
+            json), el entregable puede ser un script por terminal o una web simple.
+        </p>
+        <hr>
+        <h2>Resultado:</h2>
+        <code>
+            <pre>            
+                <p id="resultado"> 
+            </pre>
+        </code>
+        </b>
+        <hr>
+        <h2>
+            Código
+        </h2>
+        <code>
+            <pre> 
+            // JSON values
+                let values = {
+                    1: {
+                        carrier: "CCH",
+                        service: "DEX",
+                    },
+                    17: {
+                        carrier: "CHP",
+                        service: "express",
+                    },
+                };
+                // JSON Ciudades
+                let json = {
+                    data: {
+                        BUIN: {
+                            limit: 1,
+                            over_carrier_service_id: 17,
+                            under_carrier_service_id: 17,
+                        },
+                        LAJA: {
+                            limit: 1,
+                            over_carrier_service_id: 1,
+                            under_carrier_service_id: 1,
+                        },
+                        LEBU: {
+                            limit: 1,
+                            over_carrier_service_id: 1,
+                            under_carrier_service_id: 1,
+                        },
+                        LOTA: {
+                            limit: 1,
+                            over_carrier_service_id: 17,
+                            under_carrier_service_id: 17,
+                        },
+                    },
+                };
+
+                /* 
+                solución: 
+                - Primero recorremos el JSON de ciudades
+                - Segundo: en cada iteración se extrae el id del over y under con sus respectivos carrier y service entregando el id según el "over" y "under" id's extraidos en cada iteración
+                */
+                let result = {};
+                Object.keys(json.data).forEach((ciudad) => {
+                    console.log("ciudad", ciudad);
+
+                    const limit = json.data[ciudad].limit;
+                    const over = json.data[ciudad].over_carrier_service_id;
+                    const under = json.data[ciudad].under_carrier_service_id;
+
+                    result[ciudad] = {
+                        limit: limit,
+                        over: {
+                            carrier: values[over].carrier,
+                            service: values[over].service,
+                        },
+                        under: {
+                            carrier: values[under].carrier,
+                            service: values[under].service,
+                        },
+                    };
+                });
+                console.log(result);
+
+                document.getElementById("resultado").innerText = JSON.stringify(
+                    result,
+                    null,
+                    2
+                );
+            </pre>
+        </code>
+
+    </div>
+    <script src="./main.js"></script>
+
+</body>
+
+</html>
