@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 Ejercicio</title>
+</head>
+
+<body>
+
+    <div>
+        <h1>01 ejercicios</h1>
+        <p>
+            Ejercicio 1 (2pts)
+            Crear un script (javascript/nodejs) que reciba un rango entre A y B y a partir de este rango se muestren en
+            pantalla los
+            números primos.
+
+            En matemáticas, un número primo es un número natural mayor que 1 que tiene únicamente dos divisores
+            positivos distintos:
+            él mismo y el 1.
+            <br>
+            <b> Ej: </b>Para el rango entre 1 y 10, los números primos serán 2,3,5 y 7.
+            <br>
+            El entregable puede ser un script que se pueda ejecutar por terminal o una web simple sin diseño.
+        </p>
+        <hr>
+        <h2>Resultado:</h2>
+        <b id="resultado">
+        </b>
+        <hr>
+        <h2>
+            Código
+        </h2>
+        <code>
+            <pre>
+            let numerosPrimos = [];
+            
+                let primo = (numero) => {
+                    for (let i = 2; i < numero; i++) {
+                        if (numero % i===0) { 
+                            return false;
+                            } 
+                        }
+
+                    return numero !== 1;
+                };
+
+
+            for (let j = 1; j < 10; j++) {
+                if (primo(j)) {
+                    numerosPrimos.push(j);
+                }
+            }
+
+            console.log("numerosPrimos", numerosPrimos);
+
+            document.getElementById("resultado").innerText = numerosPrimos;
+
+
+            </pre>
+        </code>
+
+    </div>
+    <script src="./main.js"></script>
+
+</body>
+
+</html>
