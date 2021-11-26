@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div
-          class="col-md-6 col-lg-4 col-xl-3"
+          class="col-md-6 col-lg-4 col-xl-3 mb-5"
           v-for="item in personajes.results"
           :key="item.id"
         >
