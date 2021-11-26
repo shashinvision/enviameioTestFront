@@ -13,7 +13,16 @@
       </p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item"><b>Modified</b>: {{ item.modified }}</li>
+      <li class="list-group-item">
+        <b>Modified</b>:
+        {{
+          new Date(item.modified).toLocaleDateString("es-es", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })
+        }}
+      </li>
     </ul>
   </div>
 </template>
