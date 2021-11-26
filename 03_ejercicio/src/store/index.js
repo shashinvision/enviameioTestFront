@@ -75,7 +75,7 @@ export default createStore({
           console.error("Error al intentar ingresar", err);
         });
     },
-    editPersonajeAction({ commit, state }, dataLoad) {
+    editPersonajeAction({ commit }, dataLoad) {
       commit("editPersonajeMutation", dataLoad);
     },
   },
