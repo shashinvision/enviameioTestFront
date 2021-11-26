@@ -72,17 +72,21 @@ export default {
     /**
      * Al computed en Vue podemos hacer uso de su cache, esto significa que si hay data igual a la anterior no la carga ni muta, solo lo que se agrego o cambio
      * */
-    ...mapState(["personajes"]),
+    ...mapState(["personajes", "visita"]),
   },
 
   mounted() {
     this.loader = true;
+    console.log("personajes", this.personajes);
 
-    this.personajesAction({
-      paginationData: this.paginationData,
-      offsetData: this.offsetData,
-      search: this.search,
-    });
+    if (this.visita == false) {
+      this.personajesAction({
+        paginationData: this.paginationData,
+        offsetData: this.offsetData,
+        search: this.search,
+      });
+    }
+
     setTimeout(() => {
       this.loader = false;
     }, 5000);

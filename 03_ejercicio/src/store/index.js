@@ -10,6 +10,7 @@ export default createStore({
       hash: "hash=3b750f471b1078e17963021a9937e915",
     },
     personajes: {},
+    visita: false,
   },
   mutations: {
     personajesMutation(state, payload) {
@@ -21,6 +22,15 @@ export default createStore({
       console.log("respuesta personajesPaginationMutation", payload.data);
 
       state.personajes = payload.data;
+      state.visita = true;
+    },
+    editPersonajeMutation(state, payload) {
+      for (let i = 0; i < state.personajes.results.length; i++) {
+        if (state.personajes.results[i].id == payload.id) {
+          state.personajes.results[i].name = payload.name;
+          state.personajes.results[i].description = payload.description;
+        }
+      }
     },
   },
   actions: {
@@ -54,7 +64,7 @@ export default createStore({
           if (dataLoad.paginationData == 0) {
             commit("personajesMutation", payload);
           } else {
-            /* Caga con paginación
+            /* Carga con pagination
              Al usar el cache de computed uso el mismo
              llamado agregando al Front solo lo nuevo de la consulta
              */
@@ -64,6 +74,9 @@ export default createStore({
         .catch(function (err) {
           console.error("Error al intentar ingresar", err);
         });
+    },
+    editPersonajeAction({ commit, state }, dataLoad) {
+      commit("editPersonajeMutation", dataLoad);
     },
   },
   modules: {},

@@ -23,6 +23,15 @@
           })
         }}
       </li>
+      <li class="list-group-item">
+        <router-link
+          type="input"
+          class="btn btn-primary"
+          :to="{ name: 'Edit', params: { id: item.id } }"
+        >
+          Editar
+        </router-link>
+      </li>
     </ul>
   </div>
 </template>
