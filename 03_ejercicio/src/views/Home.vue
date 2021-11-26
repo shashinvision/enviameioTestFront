@@ -10,6 +10,7 @@
           <Card :item="item" />
         </div>
       </div>
+      <button @click="cargaPagination">nuevo</button>
     </div>
   </div>
 </template>
@@ -23,16 +24,37 @@ export default {
   components: {
     Card,
   },
+  data() {
+    return {
+      paginationData: 8,
+      offsetData: 0,
+    };
+  },
   computed: {
+    /**
+     * Al computed en Vue podemos hacer uso de su cache, esto significa que si hay data igual a la anterior no la carga ni muta, solo lo que se agrego o cambio
+     * */
     ...mapState(["personajes"]),
+  },
+  mounted() {
+    this.personajesAction({
+      paginationData: this.paginationData,
+      offsetData: 0,
+    });
   },
   methods: {
     ...mapActions({
       personajesAction: "personajesAction",
     }),
-  },
-  mounted() {
-    this.personajesAction();
+    cargaPagination() {
+      this.paginationData += 8;
+      this.offsetData += this.paginationData;
+
+      this.personajesAction({
+        paginationData: this.paginationData,
+        offsetData: this.offsetData,
+      });
+    },
   },
 };
 </script>

@@ -6,7 +6,7 @@ export default createStore({
       baseURL: "https://gateway.marvel.com/v1/public/",
       ts: "ts=1000&",
       apikey: "apikey=dd68f89f37de666df8c69de23aabb6c8&",
-      limit: "limit=10&",
+      offset: 0,
       hash: "hash=3b750f471b1078e17963021a9937e915",
     },
     personajes: {},
@@ -17,15 +17,22 @@ export default createStore({
 
       state.personajes = payload.data;
     },
+    personajesPaginationMutation(state, payload) {
+      console.log("respuesta personajesPaginationMutation", payload.data);
+
+      state.personajes = payload.data;
+    },
   },
   actions: {
-    async personajesAction({ commit, state }, dataSignIn) {
-      // console.log("signInAction", dataSignIn);
+    async personajesAction({ commit, state }, dataLoad) {
+      // console.log("payLoad", dataLoad);
 
       await fetch(
         state.API.baseURL +
           "characters?" +
-          state.API.limit +
+          "limit=" +
+          dataLoad.paginationData +
+          "&" +
           state.API.ts +
           state.API.apikey +
           state.API.hash,
@@ -35,7 +42,6 @@ export default createStore({
             "Content-Type": "application/json",
             // 'Content-Type': 'application/x-www-form-urlencoded',
           },
-          body: JSON.stringify(dataSignIn), // body data type must match "Content-Type" header
         }
       )
         .then((res) => {
@@ -44,7 +50,16 @@ export default createStore({
         .then((payload) => {
           console.log("respuesta Action Personajes", payload);
 
-          commit("personajesMutation", payload);
+          // Carga inicial
+          if (dataLoad.paginationData == 0) {
+            commit("personajesMutation", payload);
+          } else {
+            /* Caga con paginación
+             Al usar el cache de computed uso el mismo
+             llamado agregando al Front solo lo nuevo de la consulta
+             */
+            commit("personajesPaginationMutation", payload);
+          }
         })
         .catch(function (err) {
           console.error("Error al intentar ingresar", err);
