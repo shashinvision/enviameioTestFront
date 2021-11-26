@@ -14,7 +14,15 @@
 ```
 Se encuentra dentro de la carpeta 01_ejercicio/
 
-Se ejecuta desde Live Server en VS Code o simplemente abriendo el index.html
+Se ejecuta desde Live Server en VS Code o simplemente abriendo el index.html dentro de la misma carpeta
+```
+
+### - Ejercicio 2
+
+```
+Se encuentra dentro de la carpeta 02_ejercicio/
+
+Se ejecuta desde Live Server en VS Code o simplemente abriendo el index.html dentro de la misma carpeta
 ```
 
 ## Getting Started <a name = "getting_started"></a>
