@@ -1,5 +1,29 @@
 <template>
   <div class="home">
+    <header class="mb-3">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid d-flex justify-content-end">
+          <div class="navbar">
+            <form action="" class="d-flex">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Busca por nombre"
+                aria-label="Search"
+                v-model="search"
+              />
+              <button
+                type="input"
+                class="btn btn-primary"
+                @click.prevent="cargaBusqueda"
+              >
+                Enviar
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
     <div class="container">
       <div class="row">
         <div
@@ -7,7 +31,7 @@
           v-for="item in personajes.results"
           :key="item.id"
         >
-          <Card :item="item" />
+          <Card class="items" :item="item" />
         </div>
       </div>
       <div class="row">
@@ -41,6 +65,7 @@ export default {
       paginationData: 16,
       offsetData: 0,
       loader: false,
+      search: "",
     };
   },
   computed: {
@@ -52,9 +77,11 @@ export default {
 
   mounted() {
     this.loader = true;
+
     this.personajesAction({
       paginationData: this.paginationData,
-      offsetData: 0,
+      offsetData: this.offsetData,
+      search: this.search,
     });
     setTimeout(() => {
       this.loader = false;
@@ -65,18 +92,58 @@ export default {
     ...mapActions({
       personajesAction: "personajesAction",
     }),
+    cargaBusqueda() {
+      let searchHere = "";
+
+      if (this.search != "") {
+        this.paginationData += 16;
+        this.offsetData += this.paginationData;
+
+        searchHere = "nameStartsWith=" + this.search + "&";
+
+        this.personajesAction({
+          paginationData: this.paginationData,
+          offsetData: this.offsetData,
+          search: searchHere,
+        });
+
+        setTimeout(() => {
+          this.loader = false;
+        }, 5000);
+      } else {
+        // En caso que el campo searchHere este vacío
+        this.personajesAction({
+          paginationData: this.paginationData,
+          offsetData: this.offsetData,
+          search: this.search,
+        });
+        setTimeout(() => {
+          this.loader = false;
+        }, 5000);
+      }
+    },
     cargaPagination() {
-      this.paginationData += 16;
-      this.offsetData += this.paginationData;
+      if (this.search == "") {
+        this.paginationData += 16;
+        this.offsetData += this.paginationData;
 
-      this.personajesAction({
-        paginationData: this.paginationData,
-        offsetData: this.offsetData,
-      });
+        let searchHere = "";
 
-      setTimeout(() => {
+        if (this.search != "") {
+          searchHere = "nameStartsWith=" + this.search + "&";
+        }
+
+        this.personajesAction({
+          paginationData: this.paginationData,
+          offsetData: this.offsetData,
+          search: searchHere,
+        });
+        setTimeout(() => {
+          this.loader = false;
+        }, 5000);
+      } else {
         this.loader = false;
-      }, 5000);
+      }
     },
     // infinite scroll
     hadleScroll() {
@@ -92,3 +159,16 @@ export default {
   },
 };
 </script>
+<style scoped>
+.navbar {
+  height: auto;
+  padding: 3px;
+}
+
+@media (max-width: 770px) {
+  .items {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+</style>

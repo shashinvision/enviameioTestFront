@@ -25,14 +25,14 @@ export default createStore({
   },
   actions: {
     async personajesAction({ commit, state }, dataLoad) {
-      // console.log("payLoad", dataLoad);
-
+      console.log("Data load", dataLoad);
       await fetch(
         state.API.baseURL +
           "characters?" +
           "limit=" +
           dataLoad.paginationData +
           "&" +
+          dataLoad.search +
           state.API.ts +
           state.API.apikey +
           state.API.hash,
